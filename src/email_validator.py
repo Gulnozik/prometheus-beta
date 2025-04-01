@@ -21,8 +21,9 @@ def validate_email(email):
     email = email.strip()
     
     # Regular expression for email validation
-    # Follows RFC 5322 standard with some practical constraints
-    email_regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    # Follows RFC 5322 standard with practical constraints
+    # Prevents consecutive dots in domain, ensures valid structure
+    email_regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$'
     
     # Check if email matches the regex pattern
     return bool(re.match(email_regex, email))
