@@ -17,8 +17,12 @@ def search_matrix(matrix, target):
         TypeError: If matrix is not a list of lists or target is not an integer
         ValueError: If matrix is empty or contains inconsistent row lengths
     """
-    # Validate input
-    if not isinstance(matrix, list) or not matrix:
+    # Validate input type
+    if not isinstance(matrix, list):
+        raise TypeError("Matrix must be a list")
+    
+    # Empty matrix case
+    if not matrix:
         return False
     
     if not all(isinstance(row, list) for row in matrix):
